@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSAE-Accueil</title>
+    <link rel="icon" type="image/png" href="assets/icons/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="haut_index">
+        <header class="head_index">
+        <div class="logo_head_index">
+            <a href="index.html"><img src="assets/icons/logo.png" alt="logo" height="100"></a>
+        </div>
+        <div class="button"></div>
+        <ul class="menu">
+                <li><a class="pagelink" href="structure.html">Structure</a></li>
+                <!--<li><a class="pagelink" href="equipe.html">Équipe</a></li>-->
+                <li><a class="pagelink" href="evenements.html">Événements</a></li>
+                <!--<li><a class="pagelink" href="planning.html">Planning</a></li>-->
+                <!--<li><a class="pagelink" href="inscription.html">Inscription</a></li>-->
+                <!--<li><a class="pagelink" href="multimedia.html">Multimédia</a></li>-->
+                <li><a class="pagelink" href="boutique.html">Boutique</a></li>
+                <!--<li><a class="pagelink" href="contact.html">Contact</a></li>-->
+                <li><a class="pagelink" href="logbureau.html">Bureau</a></li>
+        </ul>
+    </header>
+    <script>
+        var button = document.querySelector('.button');
+        var menu = document.querySelector('.menu');
+
+        button.onclick = function() {
+            button.classList.toggle('active');
+            menu.classList.toggle('active');
+        }
+    </script>
+        <h1>Club Subaquatique de l'Agglomération d'Elbeuf</h1>
+        <h2>Accueil</h2>
+    </div>
+
+    <div class="txtacceuil">
+    <p>Bienvenue au</p>
+    <img class="biglogo" src="assets/icons/logo.png" alt="logo">
+    </div>
+
+    <div class="conteneur">
+
+  <!-- Remplacez chaque --img par votre image, par exemple : --img: url('photo1.jpg'); -->
+        <div class="tuiles" id="tuiles">
+            <a class="tuile" data-cible="c1" href="plongee.html">
+                <span class="imagecadrebas image" style="--img: url(./assets/images/plongeessmarine.jpeg);"></span>
+                <span class="titre">Plongée sous marine</span>
+            </a>
+            <a class="tuile" data-cible="c2" href="sportive.html">
+                <span class="image" style="--img: url(./assets/images/plongeesportive.jpeg);"></span>
+                <span class="titre">Plongée sportive</span>
+            </a>
+            <a class="tuile" data-cible="c3" href="apnee.html">
+                <span class="image" style="--img: url(./assets/images/apnee.jpeg);"></span>
+                <span class="titre">Apnée</span>
+            </a>
+        </div>
+
+        <!-- Zone où s'affiche le texte de la tuile choisie -->
+
+
+        <!-- Contenus associés à chaque tuile : mettez-y ce que vous voulez -->
+        <div class="modeles">
+            <div id="c1">
+                <h3>Plongée sous marine</h3>
+                <p>Tout le texte associé à la plongée sous marine sera ici</p>
+                <p>On retrouvera tout dans activités</p>
+            </div>
+            <div id="c2">
+                <h3>Plongée sportive</h3>
+                <p>Pareil</p>
+            </div>
+            <div id="c3">
+                <h3>Apnée</h3>
+                <p>On peut vanter les mérites de nos champions et tout.</p>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        var button = document.querySelector('.tuile');
+
+        button.onclick = function() {
+            button.classList.toggle('active');
+            menu.classList.toggle('active');
+        }
+    </script>
+    
+    <script>
+        const tuiles  = document.querySelectorAll('.tuile');
+        const panneau = document.getElementById('panneau');
+        const texte   = document.getElementById('texte');
+
+        tuiles.forEach(tuile => {
+            tuile.addEventListener('click', () => {
+                const dejaActive = tuile.classList.contains('active');
+
+                tuiles.forEach(t => t.classList.remove('active'));
+
+                if (dejaActive) {              // second clic : tout se referme
+                    panneau.classList.remove('ouvert');
+                    return;
+                }
+
+                tuile.classList.add('active'); // l'image de cette tuile disparaît
+                texte.innerHTML = document.getElementById(tuile.dataset.cible).innerHTML;
+                panneau.classList.add('ouvert');
+            });
+        });
+    </script>
+    
+</body>
+
+<footer>
+    <h3>Infos complementaires</h3>
+    <img class="logofoot" src="assets/icons/logo.png" alt="logo">    
+</footer>
+</html>

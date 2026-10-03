@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSAE-Apnée</title>
+    <link rel="icon" type="image/png" href="assets/icons/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="haut_index">
+        <header class="head_index">
+        <div class="logo_head_index">
+            <a href="index.html"><img src="assets/icons/logo.png" alt="logo" height="100"></a>
+        </div>
+        <div class="button"></div>
+        <ul class="menu">
+                <li><a class="pagelink" href="index.html">Accueil</a></li>
+                <li><a class="pagelink" href="structure.html">Structure</a></li>
+                <!--<li><a class="pagelink" href="equipe.html">Équipe</a></li>-->
+                <li><a class="pagelink" href="evenements.html">Événements</a></li>
+                <!--<li><a class="pagelink" href="planning.html">Planning</a></li>-->
+                <!--<li><a class="pagelink" href="inscription.html">Inscription</a></li>-->
+                <!--<li><a class="pagelink" href="multimedia.html">Multimédia</a></li>-->
+                <li><a class="pagelink" href="boutique.html">Boutique</a></li>
+                <!--<li><a class="pagelink" href="contact.html">Contact</a></li>-->
+                <li><a class="pagelink" href="logbureau.html">Bureau</a></li>
+        </ul>
+    </header>
+    <script>
+        var button = document.querySelector('.button');
+        var menu = document.querySelector('.menu');
+
+        button.onclick = function() {
+            button.classList.toggle('active');
+            menu.classList.toggle('active');
+        }
+    </script>
+        <h1>Club Subaquatique de l'Agglomération d'Elbeuf</h1>
+        <h2>Apnée</h2>
+        
+
+    </div>
+    
+    <div class="corps_apnee">
+        <p>Ceci sera un descriptif de notre activité d'apnée, statique et dynamique. Nous pouvons y mettre les titres recus et concours auxquels certains ont participé, quelques images et même des lien vers d'autres pages web.</p>
+        <img class="imgcenter" src="assets/images/apnee1.jpeg" alt="apnee">
+        <img class="imgcenter" src="assets/images/apnee2.jpeg" alt="apnee">
+        
+    </div>
+</body>
+<footer>
+    <h3>Infos complementaires</h3>
+    <img class="logofoot" src="assets/icons/logo.png" alt="logo">    
+</footer>
+</html>

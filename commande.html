@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSAE - Commande</title>
+    <link rel="icon" type="image/png" href="assets/icons/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="haut_index">
+        <header class="head_index">
+            <div class="logo_head_index">
+                <a href="index.html"><img src="assets/icons/logo.png" alt="logo" height="100"></a>
+            </div>
+            <div class="button"></div>
+            <ul class="menu">
+                <li><a class="pagelink" href="index.html">Accueil</a></li>
+                <li><a class="pagelink" href="structure.html">Structure</a></li>
+                <!--<li><a class="pagelink" href="equipe.html">Équipe</a></li>-->
+                <li><a class="pagelink" href="evenements.html">Événements</a></li>
+                <!--<li><a class="pagelink" href="planning.html">Planning</a></li>-->
+                <!--<li><a class="pagelink" href="inscription.html">Inscription</a></li>-->
+                <!--<li><a class="pagelink" href="multimedia.html">Multimédia</a></li>-->
+                <li><a class="pagelink" href="boutique.html">Boutique</a></li>
+                <!--<li><a class="pagelink" href="contact.html">Contact</a></li>-->
+                <li><a class="pagelink" href="logbureau.html">Bureau</a></li>
+            </ul>
+        </header>
+        <script>
+            var button = document.querySelector('.button');
+            var menu = document.querySelector('.menu');
+
+            button.onclick = function () {
+                button.classList.toggle('active');
+                menu.classList.toggle('active');
+            };
+        </script>
+
+    <div class="haut_index">
+        <h1>Club Subaquatique de l'Agglomération d'Elbeuf</h1>
+        <h2>Commande</h2>
+    </div>
+
+    <div class="corps_commande">
+
+        <img class="excom1" src="assets/images/expof2.png" alt="commande" width="30%" height="30%">
+        <div class="boite-formulaire">
+            <h3>Passer une commande</h3>
+
+            <form id="orderForm">
+                <div class="champ">
+                    <label for="nom">Nom :</label>
+                    <input type="text" id="nom" autocomplete="family-name" placeholder="Ex: Dupont" required>
+                </div>
+
+                <div class="champ">
+                    <label for="prenom">Prénom :</label>
+                    <input type="text" id="prenom" autocomplete="given-name" placeholder="Ex: Jean" required>
+                </div>
+
+                <div class="champ">
+                    <label for="telephone">Numéro de téléphone :</label>
+                    <input type="tel" id="telephone" autocomplete="tel" placeholder="Ex: 06 12 34 56 78" required>
+                </div>
+
+                <div class="champ">
+                    <label for="mail">Adresse mail :</label>
+                    <input type="email" id="mail" autocomplete="email" placeholder="Ex: exemple@gmail.com" required>
+                </div>
+
+                <div id="articles"></div>
+
+                <p class="disclaimer">* Veuillez vérifier sur le site indiqué proche du modèle choisi dans la boutique, en cas d'imprévu nous vous contacterons dans les meilleurs délais.</p>
+
+                <button type="button" id="addBtn">Ajouter un article</button>
+                <br><br>               
+                <p class="total">Total : <span id="total">0,00 €</span></p>
+                <button type="submit" id="submitBtn">Valider la commande</button>
+            </form>
+        </div>
+        <img class="excom2" src="assets/images/expof1.png" alt="commande" width="30%" height="30%">
+    </div>
+
+<script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzbfUVbBtkIDSVdGqjD8NYRV2BwoQq2TFoSdWHbtrZ8qZzNrKL2kBI0FfwQ9x1U7CWP/exec";
+
+    const PRIX = {
+    "Regent mixte apnée": 20,
+    "Regent Femme": 20,
+    "Impérial Homme": 20,
+    "Impérial Femme": 20,
+    "polaire Femme": 35,
+    "Polaire Homme": 35,
+    "softshell Homme": 50,
+    "softshell Femme": 50,
+    "Sweat mixte": 40
+    };
+    const MODELES = Object.keys(PRIX);
+
+    const COULEURS_IMPOSEES = {
+        "Regent mixte apnée": "Rose folk" 
+    };
+
+    const TAILLES = ["XXS", "XS", "S", "M", "L", "XL", "2XL", "3XL", "4XL", "5XL"];
+
+    const form = document.getElementById('orderForm');
+    const articlesDiv = document.getElementById('articles');
+    let compteur = 0; 
+
+    function renumeroter() {
+        articlesDiv.querySelectorAll('.article').forEach((bloc, i) => {
+            const titre = bloc.querySelector('.titre-article');
+            if (titre) titre.textContent = 'Article ' + (i + 1);
+        });
+    }
+
+    function calculerTotal() {
+        let total = 0;
+        articlesDiv.querySelectorAll('.article').forEach(bloc => {
+            const prix = PRIX[bloc.querySelector('.modele').value] || 0;
+            const qte = parseInt(bloc.querySelector('.quantite').value, 10) || 0;
+            total += prix * qte;
+        });
+        document.getElementById('total').textContent =
+            total.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' });
+    }
+
+    function ajouterArticle() {
+        const n = ++compteur;
+        const estPremier = articlesDiv.children.length === 0;
+        const bloc = document.createElement('div');
+        bloc.className = 'article';
+
+        bloc.innerHTML = `
+            ${estPremier ? '' : '<hr><h4 class="titre-article"></h4>'}
+
+            <div class="champ">
+                <label for="modele-${n}">Modèle :</label>
+                <select class="modeleselect modele" id="modele-${n}" required>
+                    <option disabled value="" selected hidden>--Veuillez choisir une option--</option>
+                    ${MODELES.map(m => `<option value="${m}">${m}${COULEURS_IMPOSEES[m] ? ' (' + COULEURS_IMPOSEES[m] + ' uniquement)' : ''}</option>`).join('')}
+                </select>
+            </div>
+
+            <div class="champ">
+                <label for="taille-${n}">Taille :</label>
+                <select class="modeleselect taille" id="taille-${n}" required>
+                    <option disabled value="" selected hidden>--Veuillez choisir une taille--</option>
+                    ${TAILLES.map(t => `<option value="${t}">${t}</option>`).join('')}
+                </select>
+            </div>
+
+            <div class="champ">
+                <label for="couleur-${n}">Couleur :</label>
+                <input type="text" class="couleur" id="couleur-${n}" placeholder="sous réserve de stocks*" required>
+            </div>
+
+            <div class="champ">
+                <label for="quantite-${n}">Quantité :</label>
+                <input type="number" min="1" class="quantite" id="quantite-${n}" placeholder="Ex : 1" required>
+            </div>
+
+            ${estPremier ? '' : '<button type="button" class="supprimer">Supprimer cet article</button>'}
+        `;
+
+        const btnSuppr = bloc.querySelector('.supprimer');
+        if (btnSuppr) {
+            btnSuppr.addEventListener('click', () => {
+                bloc.remove();
+                renumeroter();
+                calculerTotal();
+            });
+        }
+
+        const selectModele = bloc.querySelector('.modele');
+        const champCouleur = bloc.querySelector('.couleur');
+
+        selectModele.addEventListener('change', () => {
+            const imposee = COULEURS_IMPOSEES[selectModele.value];
+            if (imposee) {
+                champCouleur.value = imposee;
+                champCouleur.readOnly = true;
+            } else {
+                if (champCouleur.readOnly) champCouleur.value = '';
+                champCouleur.readOnly = false;
+            }
+        });
+
+        articlesDiv.appendChild(bloc);
+        renumeroter();
+    }
+
+    function reinitialiser() {
+        form.reset();
+        articlesDiv.innerHTML = '';
+        compteur = 0;
+        ajouterArticle();
+        calculerTotal();
+    }
+
+    ajouterArticle();
+    document.getElementById('addBtn').addEventListener('click', ajouterArticle);
+
+    form.addEventListener('input', calculerTotal);
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const btn = document.getElementById('submitBtn');
+        btn.disabled = true;
+        btn.innerText = "Envoi en cours...";
+
+        const client = {
+            nom:       document.getElementById('nom').value.trim(),
+            prenom:    document.getElementById('prenom').value.trim(),
+            telephone: document.getElementById('telephone').value.trim(),
+            mail:      document.getElementById('mail').value.trim()
+        };
+
+        const commande = Array.from(articlesDiv.querySelectorAll('.article')).map(bloc => ({
+            ...client,
+            modele:   bloc.querySelector('.modele').value,
+            taille:   bloc.querySelector('.taille').value,
+            couleur:  COULEURS_IMPOSEES[bloc.querySelector('.modele').value] || bloc.querySelector('.couleur').value.trim(),
+            quantite: bloc.querySelector('.quantite').value,
+            prix:     PRIX[bloc.querySelector('.modele').value]
+        }));
+
+        fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(commande)
+        })
+        .then(() => {
+            alert("Commande envoyée avec succès !");
+            reinitialiser();
+        })
+        .catch(error => {
+            alert("Erreur lors de l'envoi de la commande.");
+            console.error('Erreur :', error);
+        })
+        .finally(() => {
+            btn.disabled = false;
+            btn.innerText = "Valider la commande";
+        });
+    });
+</script>
+
+</body>
+<footer>
+    <h3>Infos complementaires</h3>
+    <img class="logofoot" src="assets/icons/logo.png" alt="logo">    
+</footer>
+
+</html>
+

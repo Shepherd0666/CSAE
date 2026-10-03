@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSAE-Structure</title>
+    <link rel="icon" type="image/png" href="assets/icons/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="haut_index">
+        <header class="head_index">
+        <div class="logo_head_index">
+            <a href="index.html"><img src="assets/icons/logo.png" alt="logo" height="100"></a>
+        </div>
+        <div class="button"></div>
+        <ul class="menu">
+                <li><a class="pagelink" href="index.html">Accueil</a></li>
+                <!--<li><a class="pagelink" href="equipe.html">Équipe</a></li>-->
+                <li><a class="pagelink" href="evenements.html">Événements</a></li>
+                <!--<li><a class="pagelink" href="planning.html">Planning</a></li>-->
+                <!--<li><a class="pagelink" href="inscription.html">Inscription</a></li>-->
+                <!--<li><a class="pagelink" href="multimedia.html">Multimédia</a></li>-->
+                <li><a class="pagelink" href="boutique.html">Boutique</a></li>
+                <!--<li><a class="pagelink" href="contact.html">Contact</a></li>-->
+                <li><a class="pagelink" href="logbureau.html">Bureau</a></li>
+        </ul>
+    </header>
+    <script>
+        var button = document.querySelector('.button');
+        var menu = document.querySelector('.menu');
+
+        button.onclick = function() {
+            button.classList.toggle('active');
+            menu.classList.toggle('active');
+        }
+    </script>
+        <h1>Club Subaquatique de l'Agglomération d'Elbeuf</h1>
+        <h2>Structure</h2>        
+
+    </div>
+    <div class="corps_structure">
+        <div class="bloc">
+            <div class="gauche">
+                <h3>Piscine de la cerisaie</h3>
+                <div></div>
+                <p>La piscine située Rue de l'Abbé Becquet, 76500 Elbeuf, nous Accueille le lundi, mercredi et vendredi de 19h45 à 21h30. Nous disposons ainsi pour réaliser nos scéances de nage, plongée, et apnée statique et dynamique d'un bassin olympique de 50m ainsi qu'un bassin d'activités de 150m². Nous trouvons également sur place notre local décrit ci-dessous.</p>
+            </div>
+            <img class="img_droite" src="assets/images/piscine.jpeg" alt="piscine">
+        </div>
+        <div class="bloc inverse">
+            <div class="droite">
+                <h3>Nouveau compresseur</h3>
+                <div></div>
+                <p>Nous sommes heureux de la mise en place d'un tout nouveau compresseur air et nitrox en 2026. Ce projet lancé en 2024 à abouti grâce aux efforts et l'implication de nombreux membres du CLub (un grand merci à eux), et au financement de la Région Normandie et du Département 76.</p>
+            </div> 
+            <img class="img_gauche" src="assets/images/compresseur2.jpeg" alt="compresseur">
+        </div>
+        <div class="bloc">
+            <div class="gauche">
+                <h3>Local et materiel</h3>
+                <div></div>
+                <ul>
+                    <li>compresseur Air et Nitrox</li>
+                    <li>blocs de 6,10,12, et 15 Litres</li>
+                    <li>Détendeurs de piscine et mer</li>
+                    <li>Gilets stabililsateurs de piscine et mer en toute taille</li>
+                    <li>Palmes, masque tubas pour adulte et enfants</li>
+                </ul>
+            </div>
+            <img class="img_droite" src="assets/images/materiel.jpeg" alt="matériel">
+        </div>
+        <div class="bloc inverse">
+            <div class="droite"> 
+                <h3>Local de formation</h3>
+                <div></div>
+                <p>En lien avec la commune de Saint-Aubin-les-Elbeuf, nous réalisons les formations théoriques des N1, N2, N3, et développons la formation E1</p>
+            </div>    
+            <img class="img_gauche" src="assets/images/local_formation.jpg" alt="local">
+        </div>
+    </div>
+    
+</body>
+<footer>
+    <h3>Infos complementaires</h3>
+    <img class="logofoot" src="assets/icons/logo.png" alt="logo">    
+</footer>
+
+</html>

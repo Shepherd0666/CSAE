@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSAE-Évenements</title>
+    <link rel="icon" type="image/png" href="assets/icons/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="haut_index">
+        <header class="head_index">
+        <div class="logo_head_index">
+            <a href="index.html"><img src="assets/icons/logo.png" alt="logo" height="100"></a>
+        </div>
+        <div class="button"></div>
+        <ul class="menu">
+                <li><a class="pagelink" href="index.html">Accueil</a></li>
+                <li><a class="pagelink" href="structure.html">Structure</a></li>
+                <!--<li><a class="pagelink" href="equipe.html">Équipe</a></li>-->
+                <!--<li><a class="pagelink" href="planning.html">Planning</a></li>-->
+                <!--<li><a class="pagelink" href="inscription.html">Inscription</a></li>-->
+                <!--<li><a class="pagelink" href="multimedia.html">Multimédia</a></li>-->
+                <li><a class="pagelink" href="boutique.html">Boutique</a></li>
+                <!--<li><a class="pagelink" href="contact.html">Contact</a></li>-->
+                <li><a class="pagelink" href="logbureau.html">Bureau</a></li>
+        </ul>
+    </header>
+    <script>
+        var button = document.querySelector('.button');
+        var menu = document.querySelector('.menu');
+
+        button.onclick = function() {
+            button.classList.toggle('active');
+            menu.classList.toggle('active');
+        }
+    </script>
+        <h1>Club Subaquatique de l'Agglomération d'Elbeuf</h1>
+        <h2>Évenements</h2>
+    </div>
+    
+    <div class="corps_evenements">
+        <div class="openapnee bloc inverse">
+            <div class="droite">
+                <h3>Open apnée 2026</h3>
+                <div></div>
+                <p>Préparez-vous pour l'open d'apnée le 22 Novembre 2026 ! <br> Avec la FFESSM et la piscine de la Cerisaie, le club organise une nouvelle fois son challenge</p>
+            </div>
+            <img class="img_gauche" src="assets/images/eventapnee.jpeg" alt="open apnee 2026">
+        </div>
+        <div class="nexcompresseur bloc">
+            <div class="gauche">
+                <h3>Nouveau compresseur</h3>
+                <div></div>
+                <p>Projet lancé en 2024, nous venons de finir les 2 derniers week-end d'aout l'installation du nouveau compresseur avec la centrale de mélange Nitrox, local prêté par la Piscine La Cerisaie. Nous remercions chaleureusement la Région Normandie et le Département 76 à la participation aux financements de ce projet. Un Grand Merci à toutes les personnes impliquées à ce projet au sein du club pour leurs aides et leurs temps : Julien, Fabrice, Seb, Virginie, Jean-Louis, Matthieu, Franck, Anthony, Thierry, Romain, Patrice, Etienne&Alexis, Gilles, Patrick, Brice, Éric, Paul et j'oublie d'autres personnes.</p>
+            </div>
+            <img class="img_droite" src="assets/images/compresseur3.jpeg" alt="compresseur 2026">
+        </div>
+
+
+    </div>
+</body>
+<footer>
+    <h3>Infos complementaires</h3>
+    <img class="logofoot" src="assets/icons/logo.png" alt="logo">    
+</footer>
+</html>
